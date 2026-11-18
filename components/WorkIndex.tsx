@@ -98,6 +98,8 @@ export function WorkIndex() {
     const onKeyDown = (event: KeyboardEvent) => {
       if (!["ArrowDown", "ArrowUp"].includes(event.key)) return;
       if (event.altKey || event.ctrlKey || event.metaKey) return;
+      // Leave normal page scrolling alone unless a work item has keyboard focus.
+      if (!document.activeElement?.closest(".project-index")) return;
 
       const target = event.target as HTMLElement | null;
 
@@ -156,7 +158,11 @@ export function WorkIndex() {
   return (
     <main className="work-layout" ref={rootRef}>
       <section className="work-list" aria-label="Selected work">
-        <h1 className="sr-only">Selected projects by {site.name}</h1>
+        <div className="work-intro">
+          <p className="work-kicker">SELECTED WORK / ENGINEERING / 2026</p>
+          <h1>Systems built <em>with intention.</em></h1>
+          <p>Products at the intersection of experience, intelligence and infrastructure.</p>
+        </div>
 
         <ol className="project-index">
           {projects.map((project, index) => (
@@ -174,8 +180,9 @@ export function WorkIndex() {
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <span className="project-title">
-                  {project.title}
+                <span className="project-name-wrap">
+                  <span className="project-title">{project.title}</span>
+                  <span className="project-category">{project.category} · {project.status}</span>
                 </span>
 
                 <span className="project-arrow" aria-hidden="true">
