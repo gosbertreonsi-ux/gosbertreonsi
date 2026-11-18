@@ -22,7 +22,7 @@ export default function AboutPage() {
           <p className="about-lede">A creative engineer exploring the space between expressive interfaces and powerful systems.</p>
           <p>{site.description}</p>
           <p>{site.philosophy}</p>
-          <p>Based in Tanzania. Building for the web, with a global perspective.</p>
+          <p>Building for the web, for people and teams everywhere.</p>
         </div>
       </div>
       <section className="capabilities" aria-labelledby="capabilities-heading">

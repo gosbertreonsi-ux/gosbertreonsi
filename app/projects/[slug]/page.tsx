@@ -35,7 +35,7 @@ export default async function ProjectPage({ params }: Props) {
       </div>
       <div className="project-detail-grid">
         <div className="project-main-media">
-          <MediaScene project={project} label={`${project.subtitle} / Concept visual`} />
+          <MediaScene project={project} label={`${project.subtitle} / Visual study`} />
         </div>
         <div className="project-story">
           <p className="project-lede">{project.description}</p>
@@ -43,13 +43,18 @@ export default async function ProjectPage({ params }: Props) {
             <p>© {project.year}</p>
             <p>{project.status}</p>
           </div>
-          {project.href ? (
-            <a className="outlined-button" href={project.href} target="_blank" rel="noopener noreferrer">
-              {project.linkLabel || "Visit project"} ↗
-            </a>
-          ) : (
-            <Link className="outlined-button" href={site.github} target="_blank" rel="noopener noreferrer">Explore my GitHub ↗</Link>
-          )}
+          <div className="project-actions">
+            {project.demoUrl ? (
+              <a className="outlined-button" href={project.demoUrl} target="_blank" rel="noopener noreferrer">Open live demo ↗</a>
+            ) : (
+              <span className="project-availability">Live demo not publicly verified yet</span>
+            )}
+            {project.href ? (
+              <a className="outlined-button" href={project.href} target="_blank" rel="noopener noreferrer">{project.linkLabel || "View public code"} ↗</a>
+            ) : (
+              <span className="project-availability">Source repository is private</span>
+            )}
+          </div>
         </div>
       </div>
       <div className="project-detail-extras">
@@ -57,6 +62,13 @@ export default async function ProjectPage({ params }: Props) {
         <div><span className="meta-label">Discipline</span><p>{project.category}</p></div>
         <div><span className="meta-label">Technologies</span><p>{project.stack.join(" · ")}</p></div>
       </div>
+      <section className="project-highlights-section" aria-labelledby="highlights-heading">
+        <p className="overline">Engineering notes</p>
+        <h2 id="highlights-heading">WHAT I WORKED ON</h2>
+        <ul className="project-highlights">
+          {project.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+        </ul>
+      </section>
       <Link className="next-project" href={`/projects/${next.slug}`}>
         <span className="next-kicker">Next project</span>
         <span className="next-title">{String((index % projects.length) + 1).padStart(2, "0")} {next.title} <span aria-hidden="true">↗</span></span>

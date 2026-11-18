@@ -4,9 +4,10 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: { default: `${site.name} — Creative Full-Stack Engineer`, template: `%s — ${site.name}` },
+  title: { default: `${site.name} — Full-Stack & AI-Native Software Engineer`, template: `%s — ${site.name}` },
   description: site.description,
   robots: { index: true, follow: true },
+  openGraph: { type: "website", title: `${site.name} — Full-Stack & AI-Native Software Engineer`, description: site.description },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

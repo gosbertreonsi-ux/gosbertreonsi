@@ -566,3 +566,34 @@ a, button { -webkit-tap-highlight-color: transparent; }
     transform: none;
   }
 }
+
+/* Launch polish — focused work presentation, without replacing existing motion. */
+.work-intro { padding: 12px 0 clamp(27px, 3vw, 48px); }
+.work-kicker { color: var(--muted); font-size: 11px; letter-spacing: .16em; font-weight: 600; margin: 0 0 17px; }
+.work-intro h1 { margin: 0 0 17px; max-width: 800px; font-size: clamp(42px, 5.4vw, 84px); line-height: .99; letter-spacing: -.065em; font-weight: 400; text-wrap: balance; }
+.work-intro h1 em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; color: #d6c4ab; }
+.work-intro > p:last-child { max-width: 465px; margin: 0; font-size: clamp(14px, 1.2vw, 17px); color: var(--muted); line-height: 1.6; }
+.project-index-item:first-child { border-top: 1px solid var(--line); }
+.project-row { min-height: clamp(83px, 6.4vw, 106px); }
+.project-name-wrap { display: block; min-width: 0; padding: 11px 0; }
+.project-name-wrap .project-title { padding: 0; }
+.project-category { color: var(--muted); display: block; font-size: clamp(11px, .85vw, 13px); line-height: 1.35; margin-top: 6px; font-weight: 400; }
+.project-row.is-active .project-title, .project-row:hover .project-title { color: #e8d9c5; }
+.project-row.is-active .project-arrow { opacity: 1; transform: translate(0,0); }
+.project-availability { display: block; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.project-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 24px; }
+.project-highlights-section { border-top: 1px solid var(--line); padding: 45px 0 65px; display: grid; grid-template-columns: 1fr 1.8fr; gap: 25px; }
+.project-highlights-section h2 { font-size: clamp(22px, 2.6vw, 40px); margin: 0; font-weight: 400; letter-spacing: -.035em; }
+.project-highlights { grid-column: 2; list-style: none; padding: 0; margin: -5px 0 0; }
+.project-highlights li { padding: 16px 0 16px 24px; border-bottom: 1px solid var(--line); position: relative; color: var(--foreground); }
+.project-highlights li::before { content: "↗"; position: absolute; left: 0; color: var(--muted); }
+@media (max-width: 780px) {
+  .work-intro { padding-top: 0; }
+  .work-intro h1 { font-size: clamp(40px, 9vw, 65px); }
+  .project-highlights-section { grid-template-columns: 1fr; gap: 15px; }
+  .project-highlights { grid-column: 1; margin-top: 4px; }
+  .project-row { min-height: 80px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-intro *, .project-row *, .project-highlights * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
